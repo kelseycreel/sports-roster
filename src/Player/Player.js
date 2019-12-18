@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 import playerShape from '../helpers/props/playerShape';
 
@@ -18,6 +20,7 @@ class Player extends React.Component {
           <div className="card-body">
             <h5 className="card-title">{player.name}</h5>
             <p className="card-text">{player.position}</p>
+            <button className="btn btn-outline"><FontAwesomeIcon icon={faTimes} size="xs" /></button>
           </div>
         </div>
       </div>

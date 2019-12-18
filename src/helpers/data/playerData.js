@@ -4,8 +4,8 @@ import apiKeys from '../apiKeys.json';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
-const getPlayers = () => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/players.json`)
+const getPlayersByUid = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/players.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
       const allPlayers = response.data;
       const players = [];
@@ -21,4 +21,4 @@ const getPlayers = () => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-export default { getPlayers };
+export default { getPlayersByUid };

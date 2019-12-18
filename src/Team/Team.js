@@ -2,6 +2,7 @@ import React from 'react';
 
 import Player from '../Player/Player';
 import playerData from '../helpers/data/playerData';
+import authData from '../helpers/data/authData';
 
 import './Team.scss';
 
@@ -15,7 +16,9 @@ class Team extends React.Component {
   }
 
   getPlayers = () => {
-    playerData.getPlayers()
+    const uid = authData.getUid();
+
+    playerData.getPlayersByUid(uid)
       .then((players) => {
         this.setState({ players });
       })
