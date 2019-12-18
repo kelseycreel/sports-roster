@@ -6,6 +6,7 @@ import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import MyNavbar from '../MyNavbar/MyNavbar';
 import Auth from '../Auth/Auth';
+import Team from '../Team/Team';
 import firebaseConnection from '../helpers/data/firebaseConnection';
 
 firebaseConnection.firebaseApp();
@@ -29,6 +30,14 @@ class App extends React.Component {
     this.removeListener();
   }
 
+  renderView = () => {
+    const { auth } = this.state;
+    if (!auth) {
+      return (<Auth />);
+    }
+    return (<Team />);
+  }
+
   render() {
     const { auth } = this.state;
 
@@ -36,7 +45,7 @@ class App extends React.Component {
       <div className="App">
         <MyNavbar auth={auth} />
         {
-          (!auth) && (<Auth />)
+          this.renderView()
         }
       </div>
     );
