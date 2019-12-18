@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import Player from '../Player/Player';
 import playerData from '../helpers/data/playerData';
@@ -36,8 +38,14 @@ class Team extends React.Component {
 
   render() {
     return (
-      <div className="Team d-flex flex-row flex-wrap">
-        {this.state.players.map((player) => (<Player key={player.id} player={player} deleteSinglePlayer={this.deleteSinglePlayer} />))}
+      <div className="Team">
+        <div className="d-flex justify-content-between">
+          <h1>Vandy Boys 2019</h1>
+          <button className="btn btn-outline" onClick={this.showCreatePlayerForm}><FontAwesomeIcon icon={faPlus} /></button>
+        </div>
+        <div className="d-flex flex-row flex-wrap">
+            {this.state.players.map((player) => (<Player key={player.id} player={player} deleteSinglePlayer={this.deleteSinglePlayer} />))}
+        </div>
       </div>
     );
   }
