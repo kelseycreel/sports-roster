@@ -1,0 +1,44 @@
+{
+  "player1": {
+    "imageUrl": "https://vucommodores.com/amt-media/172705",
+    "name": "Harrison Ray",
+    "position": "2B",
+    "uid": "DL61pM9mUHa6zzWlwMVEbROuCXx2"
+  },
+  "player2": {
+    "imageUrl": "https://vucommodores.com/amt-media/161620",
+    "name": "Austin Martin",
+    "position": "RF",
+    "uid": "DL61pM9mUHa6zzWlwMVEbROuCXx2"
+  },
+  "player3": {
+    "imageUrl": "https://vucommodores.com/amt-media/80556",
+    "name": "Ty Duvall",
+    "position": "C",
+    "uid": "DL61pM9mUHa6zzWlwMVEbROuCXx2"
+  },
+  "player4": {
+    "imageUrl": "https://www.gannett-cdn.com/presto/2019/05/12/PNAS/57855350-a77c-403d-9bf6-12dd1031efdc-NAS-Vandy_Missouri_Baseball_Wrapup-004.JPG?crop=2673,1500,x0,y86&width=1600&height=800&fit=bounds",
+    "name": "Sterling Hayes",
+    "position": "SS",
+    "uid": "123456"
+  },
+  "player5": {
+    "imageUrl": "https://vucommodores.com/amt-media/161613",
+    "name": "Mason Hickman",
+    "position": "RHP",
+    "uid": "DL61pM9mUHa6zzWlwMVEbROuCXx2"
+  },
+  "player6": {
+    "imageUrl": "https://vucommodores.com/amt-media/161616",
+    "name": "Kumar Rocker",
+    "position": "RHP",
+    "uid": "DL61pM9mUHa6zzWlwMVEbROuCXx2"
+  },
+  "player7": {
+    "imageUrl": "https://vucommodores.com/amt-media/172768",
+    "name": "Isaiah Thomas",
+    "position": "LF",
+    "uid": "DL61pM9mUHa6zzWlwMVEbROuCXx2"
+  }
+}
