@@ -1,7 +1,10 @@
 import React from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import Player from '../Player/Player';
 import playerData from '../helpers/data/playerData';
+import PlayerForm from '../PlayerForm/PlayerForm';
 import authData from '../helpers/data/authData';
 
 import './Team.scss';
@@ -9,6 +12,8 @@ import './Team.scss';
 class Team extends React.Component {
   state = {
     players: [],
+    addMode: false,
+    showPlayerForm: false,
   }
 
   componentDidMount() {
@@ -19,8 +24,18 @@ class Team extends React.Component {
     playerData.deletePlayerById(playerId)
       .then(() => {
         this.getPlayers();
+        this.setState({ showPlayerForm: false });
       })
       .catch((err) => console.error(err));
+  }
+
+  setAddMode = (addMode) => {
+    this.setState({ addMode, showPlayerForm: true });
+  }
+
+  showPlayerFormEvent = (e) => {
+    e.preventDefault();
+    this.setState({ showPlayerForm: true });
   }
 
   getPlayers = () => {
@@ -33,11 +48,29 @@ class Team extends React.Component {
       .catch((error) => console.error(error));
   }
 
+  createPlayer = (newPlayer) => {
+    playerData.savePlayer(newPlayer)
+      .then(() => {
+        this.getPlayers();
+        this.setState({ showPlayerForm: false });
+      });
+  }
 
   render() {
     return (
-      <div className="Team d-flex flex-row flex-wrap">
-        {this.state.players.map((player) => (<Player key={player.id} player={player} deleteSinglePlayer={this.deleteSinglePlayer} />))}
+      <div className="Team">
+        <div className="d-flex justify-content-between">
+          <h1>Vandy Boys 2019</h1>
+          <button className="btn btn-outline" onClick={this.showPlayerFormEvent}><FontAwesomeIcon icon={faPlus} /></button>
+        </div>
+        <div>
+          {
+            (this.state.showPlayerForm) && (<PlayerForm createPlayer={this.createPlayer} addMode={this.state.addMode} />)
+          }
+        </div>
+        <div className="d-flex flex-row flex-wrap">
+            {this.state.players.map((player) => (<Player key={player.id} player={player} deleteSinglePlayer={this.deleteSinglePlayer} />))}
+        </div>
       </div>
     );
   }
