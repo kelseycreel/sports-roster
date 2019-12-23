@@ -2,17 +2,29 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import authData from '../helpers/data/authData';
+import playerShape from '../helpers/props/playerShape';
 
 class PlayerForm extends React.Component {
   static propTypes = {
-    createPlayer: PropTypes.func,
     addMode: PropTypes.bool,
+    editMode: PropTypes.bool,
+    createPlayer: PropTypes.func,
+    updateNewPlayer: PropTypes.func,
+    playerToEdit: playerShape.playerShape,
+    setShowForm: PropTypes.func,
   }
 
   state = {
     playerName: '',
     playerImg: '',
     playerPosition: '',
+  }
+
+  componentDidMount() {
+    const { playerToEdit, editMode } = this.props;
+    if (editMode) {
+      this.setState({ playerName: playerToEdit.name, playerImg: playerToEdit.imageUrl, playerPosition: playerToEdit.position });
+    }
   }
 
   savePlayerEvent = (e) => {
@@ -26,6 +38,18 @@ class PlayerForm extends React.Component {
     };
     createPlayer(newPlayerInfo);
     this.setState({ playerName: '', playerImg: '', playerPosition: '' });
+  }
+
+  updatePlayerEvent = (e) => {
+    e.preventDefault();
+    const { updateNewPlayer, playerToEdit } = this.props;
+    const updatedPlayerInfo = {
+      name: this.state.playerName,
+      imageUrl: this.state.playerImg,
+      position: this.state.playerPosition,
+      uid: playerToEdit.uid,
+    };
+    updateNewPlayer(playerToEdit.id, updatedPlayerInfo);
   }
 
   nameChange = (e) => {
@@ -43,8 +67,21 @@ class PlayerForm extends React.Component {
     this.setState({ playerPosition: e.target.value });
   }
 
+  closeFormEvent = (e) => {
+    e.preventDefault(e);
+    const { setShowForm } = this.props;
+    this.setState({
+      playerName: '',
+      playerImg: '',
+      playerPosition: '',
+      addMode: false,
+      editMode: false,
+    });
+    setShowForm(false);
+  }
+
   render() {
-    const { addMode } = this.props;
+    const { editMode } = this.props;
 
     return (
       <div className="PlayerForm">
@@ -83,10 +120,11 @@ class PlayerForm extends React.Component {
           />
         </div>
         {
-          (addMode)
-            ? (<button className="btn btn-warning" onClick={this.updatePlayerEvent}>Update Player</button>)
-            : (<button className="btn btn-secondary" onClick={this.savePlayerEvent}>Add Player</button>)
+          (editMode)
+            ? (<button className="btn btn-outline-warning" onClick={this.updatePlayerEvent}>Update Player</button>)
+            : (<button className="btn btn-outline-warning" onClick={this.savePlayerEvent}>Add Player</button>)
         }
+        <button className="btn btn-outline-dark" onClick={this.closeFormEvent}>Close</button>
       </form>
     </div>
     );

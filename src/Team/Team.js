@@ -13,7 +13,9 @@ class Team extends React.Component {
   state = {
     players: [],
     addMode: false,
+    editMode: false,
     showPlayerForm: false,
+    playerToEdit: {},
   }
 
   componentDidMount() {
@@ -31,6 +33,18 @@ class Team extends React.Component {
 
   setAddMode = (addMode) => {
     this.setState({ addMode, showPlayerForm: true });
+  }
+
+  setEditMode = (editMode) => {
+    this.setState({ editMode, showPlayerForm: true });
+  }
+
+  setShowForm = (showPlayerForm) => {
+    this.setState({ showPlayerForm });
+  }
+
+  setPlayerToEdit = (player) => {
+    this.setState({ playerToEdit: player });
   }
 
   showPlayerFormEvent = (e) => {
@@ -56,6 +70,15 @@ class Team extends React.Component {
       });
   }
 
+  updateNewPlayer = (playerId, updatedPlayer) => {
+    playerData.updatePlayer(playerId, updatedPlayer)
+      .then(() => {
+        this.getPlayers();
+        this.setState({ editMode: false, showPlayerForm: false });
+      })
+      .catch((err) => console.error(err));
+  }
+
   render() {
     return (
       <div className="Team">
@@ -65,11 +88,14 @@ class Team extends React.Component {
         </div>
         <div>
           {
-            (this.state.showPlayerForm) && (<PlayerForm createPlayer={this.createPlayer} addMode={this.state.addMode} />)
+           (this.state.showPlayerForm)
+           && (<PlayerForm createPlayer={this.createPlayer} addMode={this.state.addMode} editMode={this.state.editMode} updateNewPlayer={this.updateNewPlayer} playerToEdit={this.state.playerToEdit} setShowForm={this.setShowForm} />)
           }
         </div>
         <div className="d-flex flex-row flex-wrap">
-            {this.state.players.map((player) => (<Player key={player.id} player={player} deleteSinglePlayer={this.deleteSinglePlayer} />))}
+            {
+              this.state.players.map((player) => (<Player key={player.id} player={player} deleteSinglePlayer={this.deleteSinglePlayer} setEditMode={this.setEditMode} setPlayerToEdit={this.setPlayerToEdit} />))
+            }
         </div>
       </div>
     );
