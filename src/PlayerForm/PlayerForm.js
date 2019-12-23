@@ -69,8 +69,15 @@ class PlayerForm extends React.Component {
 
   closeFormEvent = (e) => {
     e.preventDefault(e);
-    // this.setState({ playerName: '', playerImg: '', playerPosition: '', addMode: false, editMode: false, });
-    setShowForm({ showPlayerForm: false });
+    const { setShowForm } = this.props;
+    this.setState({
+      playerName: '',
+      playerImg: '',
+      playerPosition: '',
+      addMode: false,
+      editMode: false,
+    });
+    setShowForm(false);
   }
 
   render() {

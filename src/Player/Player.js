@@ -37,8 +37,10 @@ class Player extends React.Component {
           <div className="card-body">
             <h5 className="card-title">{player.name}</h5>
             <p className="card-text">{player.position}</p>
-            <button className="btn btn-outline" onClick={this.deleteSinglePlayerEvent}><FontAwesomeIcon icon={faTimes} size="sm" /></button>
-            <button className="btn btn-outline" onClick={this.editSinglePlayerEvent}><FontAwesomeIcon icon={faPen} size="xs" /></button>
+            <div className="d-flex justify-content-end">
+            <button className="btn btn-outline fontawesomeex" onClick={this.deleteSinglePlayerEvent}><FontAwesomeIcon icon={faTimes} size="sm" /></button>
+            <button className="btn btn-outline fontawesomepen" onClick={this.editSinglePlayerEvent}><FontAwesomeIcon icon={faPen} size="xs" /></button>
+            </div>
           </div>
         </div>
       </div>
