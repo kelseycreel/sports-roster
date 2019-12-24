@@ -83,7 +83,7 @@ class Team extends React.Component {
     return (
       <div className="Team">
         <div className="d-flex justify-content-between">
-          <h1>Vandy Boys 2019</h1>
+          <h1> </h1>
           <button className="btn btn-outline" onClick={this.showPlayerFormEvent}><FontAwesomeIcon icon={faPlus} /></button>
         </div>
         <div>

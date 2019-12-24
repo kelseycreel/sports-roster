@@ -20,20 +20,13 @@ class MyNavbar extends React.Component {
 
     return (
       <div className="MyNavbar">
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <span className="navbar-brand" href="#">Vanderbilt Sports Roster</span>
-          <button className="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-            </ul>
+        <nav className="navbar navbar-expand-lg bg-dark d-flex justify-content-between">
+          <span className="navbar-brand" href="#">Vanderbilt Baseball Roster</span>
             <div className="form-inline my-2 my-lg-0">
               {
                 (auth) && (<button className="nav-link btn btn-outline-light" onClick={this.logOutEvent}>Logout</button>)
               }
             </div>
-          </div>
         </nav>
       </div>
     );
