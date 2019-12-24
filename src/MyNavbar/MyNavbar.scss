@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700&display=swap');
+
+.navbar-brand {
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-family: 'PT Sans Narrow', sans-serif;
+  color: goldenrod;
+}
+
+nav {
+  button {
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-family: 'PT Sans Narrow', sans-serif;
+    line-height: 1em;
+  }
+}

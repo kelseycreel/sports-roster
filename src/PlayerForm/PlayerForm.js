@@ -84,7 +84,7 @@ class PlayerForm extends React.Component {
     const { editMode } = this.props;
 
     return (
-      <div className="PlayerForm">
+      <div className="PlayerForm border">
       <form className='col-6 offset-3 PlayerForm'>
         <div className="form-group">
           <label htmlFor="order-name">Player Name:</label>
